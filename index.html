@@ -1,6 +1,161 @@
 <html>
-<head>
-</head>
-<body>
-  <h1> Hello World </h1>
-</body></html>
+    <head>
+      <style>
+      body{
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    width: 98%;
+    height: 100%;
+    animation: rainbow 10s linear infinite;
+}
+nav a{
+    margin-right: 40px;
+    margin-left: 35px;
+    text-decoration: none;
+    color: yellow;
+    text-align: center;
+}
+nav{
+    background-color: teal;
+    padding: 15px;
+    margin: 0px;
+}
+a:hover{
+    font-size: 25px;
+}
+#homepage{
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+
+}
+#signinbutton{
+    width: 155px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: turquoise;
+}
+#signinbutton:hover{
+    background-color: darkturquoise;
+    width: 185px;
+    height: 60px;
+    transition: 0.5s;
+}
+.rainbow-background {
+    width: 100%;
+    height: 100%;
+    animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+    0% { background-color: rgba(255, 0, 0, 0.242); }
+    14% { background-color: rgba(255, 166, 0, 0.245); }
+    28% { background-color: rgba(255, 255, 0, 0.238); }
+    42% { background-color: rgba(0, 128, 0, 0.258); }
+    57% { background-color: rgba(0, 0, 255, 0.288); }
+    71% { background-color: rgba(76, 0, 130, 0.245); }
+    85% { background-color: rgba(238, 130, 238, 0.375); }
+    100% { background-color: rgba(255, 0, 0, 0.24); }
+}
+
+footer{
+    background-color: darkgray;
+    height: 150px;
+    margin-bottom: 0px;
+}
+button {
+    width: 120px;
+    height: 45px;
+    border-radius: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-right: 10px;
+}
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+hr{
+    border-color: gainsboro;
+    border: 1px dashed;
+}
+fieldset{
+    border-radius: 25px;
+    text-align: left;
+    padding-left: 125px;
+    border: 2px solid black;
+    background-color: lightgray;
+}
+#form{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+input{
+    margin-left: 15px;
+    width: 80%;
+    height: 25px;
+    margin-bottom: 25px;
+}
+textarea{
+    width: 85%;
+    height: 250px;
+}
+      </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#"> Home </a>
+            <a href="#"> General Knowledge </a>
+            <a href="#"> Math </a>
+            <a href="#"> Science </a>
+            <a href="#"> Question Bank </a>
+        </nav>
+        <div id="homepage">
+           <br><br><br> <h1 id="welcomething"> Welcome to Tech Learner! Sign in for full access. </h1>
+          
+        </div>
+         <h3 id="signinindicator"> Please Sign In </h3>
+           <button onclick="signIn()" id="signinbutton">  Sign In </button>
+        <Br><Br><Br>
+        <h2> QUIZZES </h2>
+        <a href="https://www.jetpunk.com/tags/general-knowledge"> General Knowledge Quiz </a><Br>
+        <a href="https://www.thatquiz.org/tq-1/math/arithmetic/" > Mathematics Quiz </a><Br>
+        <a href="https://generalknowledge4u.com/top-100-science-quiz-questions-with-answers/"> Science Quiz </a>
+        <Br><a href="https://www.sporcle.com/"> Random Quizzes </a>
+        <Br><Br><Br>
+
+        <div id="form">
+            <fieldset>
+                <legend> Contact Us </legend>
+            <form>
+                <label> Name </label>
+                <input type="text">
+                <br>
+                <label> Email </label>
+                <input type="email">
+                <br>
+                <label> Your Message </label> <Br>
+                <textarea> Write Here </textarea>
+            </form>
+            </fieldset>
+        </div>
+    <script>
+            function signIn() {
+            let person = true; // or any other condition you want to check
+            if (person) {
+                let findname = prompt("Please enter your name");
+                document.getElementById("welcomething").innerText = "Welcome to Tech Learner " + findname + ". Thank you for signing in";
+                document.getElementById("signinindicator").innerText = "You Are Signed In! ✅";
+                document.getElementById("homepage").style.backgroundImage = "url('https://static.vecteezy.com/system/resources/previews/013/118/479/large_2x/questions-mark-illustration-inside-of-background-for-faq-and-question-and-answer-time-free-photo.jpg')";
+                document.getElementById("signinindicator").style.animation = "rainbow 5s linear infinite";
+                document.getElementById("form").style.display
+            }
+            }
+    </script>
+
+    </body>
+</html>
