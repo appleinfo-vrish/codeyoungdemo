@@ -1,0 +1,970 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>LinkedIn Mockup</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f3f2ef; margin: 0; }
+        .navbar {
+            background: #283e4a;
+            color: #fff;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 40px;
+            padding-right: 40px;
+            height: 56px;
+            border-bottom: 1px solid #1d2d3a;
+        }
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 26px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo::before {
+            content: "";
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: url('https://cdn-icons-png.flaticon.com/512/174/174857.png') no-repeat center/cover;
+            margin-right: 10px;
+        }
+        .navbar .search {
+            flex: 1;
+            margin: 0 30px;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .search input {
+            padding: 7px 12px 7px 36px;
+            border-radius: 4px;
+            border: none;
+            width: 260px;
+            background: #eef3f8 url('https://cdn-icons-png.flaticon.com/512/622/622669.png') 8px center no-repeat;
+            background-size: 18px;
+            font-size: 15px;
+        }
+        .navbar .menu {
+            display: flex;
+            gap: 32px;
+            font-size: 16px;
+            align-items: center;
+        }
+        .navbar .menu div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            color: #b0b8c1;
+            transition: color 0.2s;
+        }
+        .navbar .menu div.active,
+        .navbar .menu div:hover {
+            color: #fff;
+        }
+        .navbar .menu div span {
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        .navbar .menu .icon {
+            font-size: 20px;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            gap: 30px;
+        }
+        .sidebar, .rightbar {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            min-width: 260px;
+            box-shadow: 0 2px 6px #0001;
+            height: fit-content;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .main {
+            flex: 2.5;
+            min-width: 420px;
+        }
+        .profile {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 90px;
+            margin-bottom: 10px;
+            border: 3px solid #fff;
+            box-shadow: 0 2px 8px #0002;
+        }
+        .profile h2 { margin: 10px 0 5px 0; font-size: 22px; }
+        .profile p { color: #666; margin: 0; font-size: 15px; }
+        .profile .headline {
+            color: #0a66c2;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .profile .location {
+            color: #888;
+            font-size: 13px;
+        }
+        .sidebar .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            font-size: 15px;
+        }
+        .sidebar .stats div {
+            text-align: center;
+        }
+        .sidebar .links {
+            margin-top: 16px;
+        }
+        .sidebar .links a {
+            display: block;
+            color: #0a66c2;
+            text-decoration: none;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        .sidebar .links a:hover {
+            text-decoration: underline;
+        }
+        .sidebar .recent-activity {
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        .sidebar .recent-activity h4 {
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #283e4a;
+        }
+        .sidebar .recent-activity ul {
+            padding-left: 18px;
+            margin: 0;
+        }
+        .sidebar .recent-activity li {
+            margin-bottom: 6px;
+        }
+        .post-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 18px 16px 12px 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px #0001;
+        }
+        .post-box .top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .post-box .top img {
+            width: 48px;
+            border-radius: 50%;
+        }
+        .post-box textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            resize: none;
+            font-size: 15px;
+            margin-bottom: 10px;
+            background: #f3f2ef;
+        }
+        .post-box .actions {
+            display: flex;
+            gap: 30px;
+            color: #666;
+            font-size: 15px;
+        }
+        .post-box .actions div {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .post-box .attachments {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .post-box .attachments input[type="file"] {
+            display: none;
+        }
+        .post {
+            background: #fff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px #0001;
+        }
+        .post .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .post .author img {
+            width: 44px;
+            border-radius: 50%;
+        }
+        .post .author-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .post .author-details span {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .post .author-details .headline {
+            font-size: 13px;
+            color: #888;
+        }
+        .post .content {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .post .media {
+            margin-bottom: 10px;
+        }
+        .post .media img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .post .meta {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .post .actions {
+            display: flex;
+            gap: 28px;
+            color: #666;
+            font-size: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 8px;
+        }
+        .post .actions div {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .post .comments-section {
+            margin-top: 10px;
+            background: #f3f2ef;
+            border-radius: 6px;
+            padding: 10px;
+        }
+        .post .comments-section .comment {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .post .comments-section .comment strong {
+            color: #0a66c2;
+        }
+        .post .comments-section input[type="text"] {
+            width: 80%;
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 6px;
+        }
+        .post .comments-section button {
+            padding: 6px 12px;
+            background: #0a66c2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .rightbar h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .suggestion {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .suggestion img {
+            width: 38px;
+            border-radius: 50%;
+        }
+        .suggestion .info {
+            flex: 1;
+        }
+        .suggestion .info div {
+            font-size: 15px;
+        }
+        .suggestion .info .headline {
+            color: #888;
+            font-size: 13px;
+        }
+        .suggestion button {
+            background: #0a66c2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .suggestion button:hover {
+            background: #004182;
+        }
+        .rightbar .see-all {
+            color: #0a66c2;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+            text-align: left;
+            padding: 0;
+        }
+        .rightbar .ads {
+            margin-top: 20px;
+            background: #eef3f8;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .rightbar .ads img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        @media (max-width: 900px) {
+            .container { flex-direction: column; gap: 0; }
+            .sidebar, .rightbar, .main { min-width: 0; }
+        }
+        #signin-screen {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #f3f2ef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        #signin-box {
+            background: #fff;
+            padding: 40px 32px 32px 32px;
+            border-radius: 10px;
+            box-shadow: 0 4px 24px #0002;
+            min-width: 340px;
+            text-align: center;
+        }
+        #signin-box h1 {
+            font-size: 32px;
+            color: #0a66c2;
+            margin-bottom: 18px;
+            font-weight: bold;
+        }
+        #signin-box input[type="text"], #signin-box input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        #signin-box button {
+            width: 100%;
+            padding: 10px;
+            background: #0a66c2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        #signin-box button:hover {
+            background: #004182;
+        }
+        #signin-box .error {
+            color: #d32f2f;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="signin-screen">
+        <form id="signin-box" onsubmit="return false;">
+            <h1>Sign into LinkedIn</h1>
+            <div class="error" id="signin-error" style="display:none;"></div>
+            <input type="text" id="signin-username" placeholder="Email or Username" autocomplete="username" required="">
+            <input type="password" id="signin-password" placeholder="Password" autocomplete="current-password" required="">
+            <button type="submit" id="signin-btn">Sign in</button>
+        </form>
+    </div>
+
+    <div id="main-app" style="display:none;">
+        <div class="navbar">
+            <div class="logo">LinkedIn</div>
+            <div class="search">
+                <input type="text" placeholder="Search people, jobs, posts..." id="global-search">
+            </div>
+            <div class="menu">
+                <div class="active" onclick="showPage('home', event)"><span class="icon">🏠</span><span>Home</span></div>
+                <div onclick="showPage('network', event)"><span class="icon">👥</span><span>My Network</span></div>
+                <div onclick="showPage('jobs', event)"><span class="icon">💼</span><span>Jobs</span></div>
+                <div onclick="showPage('messaging', event)"><span class="icon">💬</span><span>Messaging</span></div>
+                <div onclick="showPage('notifications', event)"><span class="icon">🔔</span><span>Notifications</span></div>
+                <div onclick="showPage('me', event)"><span class="icon">👤</span><span>Me</span></div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="sidebar">
+                <div class="profile">
+                    <img src="https://cdn.vectorstock.com/i/500p/89/50/generic-person-gray-photo-placeholder-man-vector-24848950.jpg" alt="Profile">
+                    <h2>Vrishin</h2>
+                    <div class="headline">Student | Tech Enthusiast</div>
+                    <p class="location">Canada</p>
+                </div>
+                <div class="stats">
+                    <div>
+                        <div><strong>Connections</strong></div>
+                        <div>500+</div>
+                    </div>
+                    <div>
+                        <div><strong>Profile Views</strong></div>
+                        <div>123</div>
+                    </div>
+                </div>
+                <hr>
+                <div class="links">
+                    <a href="#">Groups</a>
+                    <a href="#">Events</a>
+                    <a href="#">Followed Hashtags</a>
+                </div>
+                <div class="recent-activity">
+                    <h4>Recent Activity</h4>
+                    <ul>
+                        <li>Commented on Jane's post</li>
+                        <li>Connected with Emily Clark</li>
+                        <li>Applied for Frontend Developer at Google</li>
+                        <li>Joined #AI group</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main" id="main-content">
+                <!-- Content will be injected by JS -->
+            </div>
+            <div class="rightbar">
+                <h3>People you may know</h3>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>Emily Clark</strong></div>
+                        <div class="headline">Product Manager</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>David Lee</strong></div>
+                        <div class="headline">UX Designer</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>Arjun Patel</strong></div>
+                        <div class="headline">Data Scientist</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <button class="see-all" onclick="alert('See all suggestions coming soon!')">See all</button>
+                <div class="ads">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&amp;fit=crop&amp;w=400&amp;q=80" alt="Ad">
+                    <div><strong>Upgrade to Premium!</strong></div>
+                    <div>Get advanced insights and unlimited messaging.</div>
+                    <button style="margin-top:8px;" onclick="alert('Premium coming soon!')">Try Premium</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sign-in logic
+        document.getElementById('signin-btn').onclick = function() {
+            var username = document.getElementById('signin-username').value.trim();
+            var password = document.getElementById('signin-password').value;
+            var errorDiv = document.getElementById('signin-error');
+            if (username && password) {
+                document.getElementById('signin-screen').style.display = 'none';
+                document.getElementById('main-app').style.display = '';
+                showPage('home');
+            } else {
+                errorDiv.textContent = "Please enter both username and password.";
+                errorDiv.style.display = 'block';
+            }
+        };
+
+        // Helper for suggestions
+        function connectSuggestion(btn) {
+            btn.textContent = "Pending";
+            btn.disabled = true;
+            btn.style.background = "#888";
+        }
+
+        // Home page posts data
+        const posts = [
+            {
+                author: {
+                    name: "Jane Smith",
+                    img: "https://randomuser.me/api/portraits/women/44.jpg",
+                    headline: "Software Engineer at TechCorp"
+                },
+                meta: "2h • 🌎",
+                content: "Excited to start my new role at TechCorp! 🚀",
+                media: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
+                likes: 0,
+                comments: [
+                    { user: "Vrishin", text: "Congrats Jane!" }
+                ]
+            },
+            {
+                author: {
+                    name: "Mike Johnson",
+                    img: "https://randomuser.me/api/portraits/men/65.jpg",
+                    headline: "AI Researcher | Speaker"
+                },
+                meta: "5h • 🌎",
+                content: "Attending a great conference on AI and Machine Learning!",
+                media: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+                likes: 2,
+                comments: [
+                    { user: "Jane Smith", text: "Enjoy the conference!" }
+                ]
+            },
+            {
+                author: {
+                    name: "Priya Agarwal",
+                    img: "https://randomuser.me/api/portraits/women/12.jpg",
+                    headline: "Product Designer at Creatify"
+                },
+                meta: "1d • 🌎",
+                content: "Just published a new article on UI/UX trends for 2024. Check it out!",
+                media: "",
+                likes: 1,
+                comments: []
+            }
+        ];
+
+        // Render home page
+        function renderHome() {
+            let html = `
+                <div class="post-box">
+                    <div class="top">
+                        <img src="https://cdn.vectorstock.com/i/500p/89/50/generic-person-gray-photo-placeholder-man-vector-24848950.jpg" alt="Profile">
+                        <span style="font-weight:bold;">Start a post</span>
+                    </div>
+                    <textarea rows="3" placeholder="What do you want to talk about?" id="new-post-text"></textarea>
+                    <div class="attachments">
+                        <label>
+                            <span>📷</span> <input type="file" id="new-post-photo" accept="image/*">
+                        </label>
+                        <label>
+                            <span>🎥</span> <input type="file" id="new-post-video" accept="video/*">
+                        </label>
+                        <label>
+                            <span>📅</span> <input type="date" id="new-post-event">
+                        </label>
+                    </div>
+                    <div class="actions">
+                        <div onclick="createPost()">Post</div>
+                        <div onclick="alert('Write article coming soon!')"><span>✍️</span>Write article</div>
+                    </div>
+                </div>
+            `;
+            posts.forEach((post, idx) => {
+                html += `
+                <div class="post" data-idx="${idx}">
+                    <div class="author">
+                        <img src="${post.author.img}" alt="Author">
+                        <div class="author-details">
+                            <span>${post.author.name}</span>
+                            <div class="headline">${post.author.headline}</div>
+                        </div>
+                    </div>
+                    <div class="meta">${post.meta}</div>
+                    <div class="content">${post.content}</div>
+                    ${post.media ? `<div class="media"><img src="${post.media}" alt="Post media"></div>` : ""}
+                    <div class="actions">
+                        <div onclick="likePost(this, ${idx})"><span>👍</span>Like <span class="like-count">${post.likes}</span></div>
+                        <div onclick="toggleComments(this, ${idx})"><span>💬</span>Comment</div>
+                        <div onclick="sharePost(this)"><span>🔗</span>Share</div>
+                        <div onclick="sendPost(this)"><span>✉️</span>Send</div>
+                    </div>
+                    <div class="comments-section" style="display:none;">
+                        ${post.comments.map(c => `<div class="comment"><strong>${c.user}:</strong> ${c.text}</div>`).join("")}
+                        <input type="text" placeholder="Write a comment...">
+                        <button onclick="addComment(this, ${idx})">Post</button>
+                    </div>
+                </div>
+                `;
+            });
+            document.getElementById('main-content').innerHTML = html;
+        }
+
+        // Create post (mockup)
+        function createPost() {
+            const text = document.getElementById('new-post-text').value.trim();
+            if (!text) return alert("Post cannot be empty!");
+            posts.unshift({
+                author: {
+                    name: "Vrishin",
+                    img: "https://cdn.vectorstock.com/i/500p/89/50/generic-person-gray-photo-placeholder-man-vector-24848950.jpg",
+                    headline: "Student | Tech Enthusiast"
+                },
+                meta: "Now • 🌎",
+                content: text,
+                media: "",
+                likes: 0,
+                comments: []
+            });
+            renderHome();
+        }
+
+        // Like post
+        function likePost(el, idx) {
+            posts[idx].likes++;
+            el.querySelector('.like-count').textContent = posts[idx].likes;
+            el.style.color = '#0a66c2';
+        }
+
+        // Toggle comments
+        function toggleComments(el, idx) {
+            const postDiv = el.closest('.post');
+            const commentsSection = postDiv.querySelector('.comments-section');
+            commentsSection.style.display = commentsSection.style.display === 'none' ? '' : 'none';
+        }
+
+        // Add comment
+        function addComment(btn, idx) {
+            const input = btn.previousElementSibling;
+            const text = input.value.trim();
+            if (!text) return;
+            posts[idx].comments.push({ user: "Vrishin", text });
+            renderHome();
+            // Reopen comments section
+            setTimeout(() => {
+                document.querySelector(`.post[data-idx="${idx}"] .comments-section`).style.display = '';
+            }, 10);
+        }
+
+        // Share/Send
+        function sharePost(el) { alert('Share functionality coming soon!'); }
+        function sendPost(el) { alert('Send functionality coming soon!'); }
+
+        // Jobs page
+        function renderJobs() {
+            document.getElementById('main-content').innerHTML = `
+                <h2>Jobs</h2>
+                <div style="margin-bottom:16px;">
+                    <input type="text" placeholder="Search jobs..." style="width:60%;padding:8px;border-radius:4px;border:1px solid #ccc;">
+                    <select style="padding:8px;border-radius:4px;">
+                        <option>All Locations</option>
+                        <option>Toronto, ON</option>
+                        <option>Vancouver, BC</option>
+                        <option>Remote</option>
+                    </select>
+                    <button style="padding:8px 16px;background:#0a66c2;color:#fff;border:none;border-radius:4px;">Search</button>
+                </div>
+                <div class="post">
+                    <div class="author">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Company">
+                        <div class="author-details">
+                            <span>Frontend Developer</span>
+                            <div class="headline">Google • Toronto, ON</div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <strong>Requirements:</strong> React, JavaScript, CSS<br>
+                        <strong>Salary:</strong> $110k - $140k<br>
+                        <strong>Applied:</strong> 2 days ago
+                    </div>
+                    <div class="actions">
+                        <div onclick="alert('Apply coming soon!')"><span>🔗</span>Apply</div>
+                        <div onclick="alert('Saved!')"><span>💾</span>Save</div>
+                        <div onclick="alert('Refer coming soon!')"><span>👤</span>Refer</div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="author">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Company">
+                        <div class="author-details">
+                            <span>Data Scientist</span>
+                            <div class="headline">Amazon • Vancouver, BC</div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <strong>Requirements:</strong> Python, ML, SQL<br>
+                        <strong>Salary:</strong> $120k - $150k<br>
+                        <strong>Applied:</strong> 1 week ago
+                    </div>
+                    <div class="actions">
+                        <div onclick="alert('Apply coming soon!')"><span>🔗</span>Apply</div>
+                        <div onclick="alert('Saved!')"><span>💾</span>Save</div>
+                        <div onclick="alert('Refer coming soon!')"><span>👤</span>Refer</div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="author">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Company">
+                        <div class="author-details">
+                            <span>UI/UX Designer</span>
+                            <div class="headline">Shopify • Remote</div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <strong>Requirements:</strong> Figma, Adobe XD<br>
+                        <strong>Salary:</strong> $90k - $120k<br>
+                        <strong>Applied:</strong> 3 days ago
+                    </div>
+                    <div class="actions">
+                        <div onclick="alert('Apply coming soon!')"><span>🔗</span>Apply</div>
+                        <div onclick="alert('Saved!')"><span>💾</span>Save</div>
+                        <div onclick="alert('Refer coming soon!')"><span>👤</span>Refer</div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>Recommended Courses</h3>
+                    <ul>
+                        <li>React for Beginners - <a href="#">Enroll</a></li>
+                        <li>Machine Learning Foundations - <a href="#">Enroll</a></li>
+                        <li>UI/UX Design Bootcamp - <a href="#">Enroll</a></li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Network page
+        function renderNetwork() {
+            document.getElementById('main-content').innerHTML = `
+                <h2>My Network</h2>
+                <div style="margin-bottom:16px;">
+                    <input type="text" placeholder="Search connections..." style="width:60%;padding:8px;border-radius:4px;border:1px solid #ccc;">
+                    <button style="padding:8px 16px;background:#0a66c2;color:#fff;border:none;border-radius:4px;">Search</button>
+                </div>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>Emily Clark</strong></div>
+                        <div class="headline">Product Manager</div>
+                        <div>Mutual: Jane Smith, Mike Johnson</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/men/77.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>David Lee</strong></div>
+                        <div class="headline">UX Designer</div>
+                        <div>Mutual: Priya Agarwal</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <div class="suggestion">
+                    <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="Suggestion">
+                    <div class="info">
+                        <div><strong>Arjun Patel</strong></div>
+                        <div class="headline">Data Scientist</div>
+                        <div>Mutual: Mike Johnson</div>
+                    </div>
+                    <button onclick="connectSuggestion(this)">Connect</button>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>Groups</h3>
+                    <ul>
+                        <li>#AI Enthusiasts <button style="margin-left:8px;" onclick="alert('Joined!')">Join</button></li>
+                        <li>#Web Developers <button style="margin-left:8px;" onclick="alert('Joined!')">Join</button></li>
+                        <li>#Designers <button style="margin-left:8px;" onclick="alert('Joined!')">Join</button></li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Messaging page
+        function renderMessaging() {
+            document.getElementById('main-content').innerHTML = `
+                <h2>Messaging</h2>
+                <div style="display:flex;gap:20px;">
+                    <div style="flex:1;">
+                        <div style="font-weight:bold;margin-bottom:8px;">Chats</div>
+                        <div style="background:#eef3f8;padding:8px;border-radius:6px;margin-bottom:8px;cursor:pointer;" onclick="openChat('Mike Johnson')">
+                            <img src="https://randomuser.me/api/portraits/men/65.jpg" style="width:32px;border-radius:50%;vertical-align:middle;margin-right:8px;">
+                            Mike Johnson <span style="color:#888;">(AI Researcher)</span>
+                        </div>
+                        <div style="background:#eef3f8;padding:8px;border-radius:6px;margin-bottom:8px;cursor:pointer;" onclick="openChat('Jane Smith')">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:32px;border-radius:50%;vertical-align:middle;margin-right:8px;">
+                            Jane Smith <span style="color:#888;">(Software Engineer)</span>
+                        </div>
+                        <div style="background:#eef3f8;padding:8px;border-radius:6px;margin-bottom:8px;cursor:pointer;" onclick="openChat('Priya Agarwal')">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" style="width:32px;border-radius:50%;vertical-align:middle;margin-right:8px;">
+                            Priya Agarwal <span style="color:#888;">(Product Designer)</span>
+                        </div>
+                    </div>
+                    <div style="flex:2;" id="chat-window">
+                        <div style="color:#888;">Select a chat to view messages.</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Open chat (mockup)
+        function openChat(name) {
+            let messages = {
+                "Mike Johnson": [
+                    { from: "Mike Johnson", text: "Hi! Are you attending the AI conference next week?" },
+                    { from: "Vrishin", text: "Yes, looking forward to it!" }
+                ],
+                "Jane Smith": [
+                    { from: "Jane Smith", text: "Congrats on your new job!" },
+                    { from: "Vrishin", text: "Thank you Jane!" }
+                ],
+                "Priya Agarwal": [
+                    { from: "Priya Agarwal", text: "Check out my new article on UI/UX trends." },
+                    { from: "Vrishin", text: "Will do, thanks!" }
+                ]
+            };
+            let html = `<div style="font-weight:bold;margin-bottom:8px;">${name}</div>`;
+            (messages[name] || []).forEach(msg => {
+                html += `<div style="margin-bottom:6px;"><strong>${msg.from}:</strong> ${msg.text}</div>`;
+            });
+            html += `
+                <input type="text" placeholder="Type a message..." style="width:70%;padding:6px;border-radius:4px;border:1px solid #ccc;">
+                <button style="padding:6px 12px;background:#0a66c2;color:#fff;border:none;border-radius:4px;cursor:pointer;">Send</button>
+            `;
+            document.getElementById('chat-window').innerHTML = html;
+        }
+
+        // Notifications page
+        function renderNotifications() {
+            document.getElementById('main-content').innerHTML = `
+                <h2>Notifications</h2>
+                <div class="post">
+                    <div class="content">
+                        <strong>Jane Smith</strong> liked your post.
+                        <span style="float:right;color:#888;">2h ago</span>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="content">
+                        <strong>Mike Johnson</strong> commented: "Great work!"
+                        <span style="float:right;color:#888;">5h ago</span>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="content">
+                        <strong>Emily Clark</strong> sent you a connection request.
+                        <span style="float:right;color:#888;">1d ago</span>
+                        <button style="margin-left:8px;" onclick="alert('Accepted!')">Accept</button>
+                        <button style="margin-left:4px;" onclick="alert('Declined!')">Decline</button>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="content">
+                        <strong>Amazon</strong> viewed your profile.
+                        <span style="float:right;color:#888;">2d ago</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Profile page
+        function renderMe() {
+            document.getElementById('main-content').innerHTML = `
+                <h2>My Profile</h2>
+                <div class="profile" style="text-align:left;">
+                    <img src="https://cdn.vectorstock.com/i/500p/89/50/generic-person-gray-photo-placeholder-man-vector-24848950.jpg" alt="Profile">
+                    <h2>Vrishin</h2>
+                    <div class="headline">Student | Tech Enthusiast</div>
+                    <p class="location">Canada</p>
+                </div>
+                <div class="stats">
+                    <div>
+                        <div><strong>Connections</strong></div>
+                        <div>500+</div>
+                    </div>
+                    <div>
+                        <div><strong>Profile Views</strong></div>
+                        <div>123</div>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <h3>About</h3>
+                    <p>Passionate about technology, programming, and design. Always learning and building new things and likes to code.</p>
+                </div>
+                <div>
+                    <h3>Experience</h3>
+                    <ul>
+                        <li>Student, CodeYoung (2022-2024)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Skills</h3>
+                    <span style="background:#eef3f8;padding:6px 12px;border-radius:16px;margin-right:8px;">JavaScript</span>
+                    <span style="background:#eef3f8;padding:6px 12px;border-radius:16px;margin-right:8px;">React</span>
+                    <span style="background:#eef3f8;padding:6px 12px;border-radius:16px;margin-right:8px;">HTML</span>
+                    <span style="background:#eef3f8;padding:6px 12px;border-radius:16px;margin-right:8px;">CSS</span>
+                    <span style="background:#eef3f8;padding:6px 12px;border-radius:16px;margin-right:8px;">Biootstrap</span>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>Education</h3>
+                    <ul>
+                        <li>CodeYoung Level 1</li>
+                        <li>High School, Canada</li>
+                    </ul>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>Email: vrishin@example.com</li>
+                        <li>Location: Canada</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        // Main page switcher
+        function showPage(page, event) {
+            document.querySelectorAll('.menu div').forEach(el => el.classList.remove('active'));
+            if (event && event.currentTarget) event.currentTarget.classList.add('active');
+            if (page === 'home') renderHome();
+            else if (page === 'jobs') renderJobs();
+            else if (page === 'network') renderNetwork();
+            else if (page === 'messaging') renderMessaging();
+            else if (page === 'notifications') renderNotifications();
+            else if (page === 'me') renderMe();
+        }
+
+        // Initial load
+        window.onload = function() {
+            if (document.getElementById('main-app').style.display !== 'none') {
+                showPage('home');
+            }
+        };
+    </script>
+
+</body></html>
